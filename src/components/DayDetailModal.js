@@ -112,7 +112,7 @@ export default function DayDetailModal({ date, habits, onClose, onToggleHabit })
                       
                       <div className="flex items-center space-x-2">
                         {isCompleted && (
-                          <span className="text-green-600 text-sm font-medium">✓ Completed</span>
+                          <span className="text-primary-600 text-sm font-medium">Completed</span>
                         )}
                         
                         <button
@@ -122,7 +122,7 @@ export default function DayDetailModal({ date, habits, onClose, onToggleHabit })
                             px-3 py-1 rounded-md text-sm font-medium transition-colors
                             ${isCompleted
                               ? 'bg-gray-600 hover:bg-gray-700 text-white'
-                              : 'bg-green-600 hover:bg-green-700 text-white'
+                              : 'bg-primary-600 hover:bg-primary-700 text-white'
                             }
                             ${(isLoading || isFuture) ? 'opacity-50 cursor-not-allowed' : ''}
                           `}
@@ -167,7 +167,7 @@ export default function DayDetailModal({ date, habits, onClose, onToggleHabit })
                             w-full px-3 py-2 rounded-md text-sm font-medium transition-colors
                             ${isCompleted
                               ? 'bg-gray-600 hover:bg-gray-700 text-white'
-                              : 'bg-green-600 hover:bg-green-700 text-white'
+                              : 'bg-primary-600 hover:bg-primary-700 text-white'
                             }
                             ${(isLoading || isFuture) ? 'opacity-50 cursor-not-allowed' : ''}
                           `}

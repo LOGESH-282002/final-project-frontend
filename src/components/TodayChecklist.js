@@ -80,8 +80,8 @@ export default function TodayChecklist({ habits, onToggleHabit }) {
                   className={`
                     flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200
                     ${isCompleted
-                      ? 'border-green-500 bg-green-500'
-                      : 'border-gray-300 hover:border-green-400'
+                      ? 'border-primary-600 bg-primary-600'
+                      : 'border-gray-300 hover:border-primary-400'
                     }
                     ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   `}
@@ -97,7 +97,7 @@ export default function TodayChecklist({ habits, onToggleHabit }) {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-3">
-                      <h4 className={`font-medium ${isCompleted ? 'text-green-700 line-through' : 'text-black'}`}>
+                      <h4 className={`font-medium ${isCompleted ? 'text-primary-700 line-through' : 'text-black'}`}>
                         {habit.title}
                       </h4>
                       
@@ -111,12 +111,12 @@ export default function TodayChecklist({ habits, onToggleHabit }) {
 
                     {/* Streak Counter */}
                     <div className="flex items-center space-x-4 text-sm">
-                      <div className="flex items-center space-x-1 text-orange-600">
-                        <span>🔥</span>
+                      <div className="flex items-center space-x-1 text-primary-600">
+                        <span className="font-medium">Streak:</span>
                         <span className="font-medium">{habit.current_streak || 0}</span>
                       </div>
-                      <div className="flex items-center space-x-1 text-yellow-600">
-                        <span>🏆</span>
+                      <div className="flex items-center space-x-1 text-primary-600">
+                        <span className="font-medium">Best:</span>
                         <span className="font-medium">{habit.longest_streak || 0}</span>
                       </div>
                     </div>
@@ -151,9 +151,9 @@ export default function TodayChecklist({ habits, onToggleHabit }) {
                           disabled={isLoading}
                           className={`
                             px-3 py-1 rounded-md text-sm font-medium transition-colors
-                            ${isCompleted
+                          ${isCompleted
                               ? 'bg-gray-600 hover:bg-gray-700 text-white'
-                              : 'bg-green-600 hover:bg-green-700 text-white'
+                              : 'bg-primary-600 hover:bg-primary-700 text-white'
                             }
                             ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
                           `}
@@ -180,13 +180,13 @@ export default function TodayChecklist({ habits, onToggleHabit }) {
                     <div className="flex items-center space-x-2 mt-2">
                       <button
                         onClick={() => toggleNotes(habit.id)}
-                        className="text-sm text-blue-600 hover:text-blue-800"
+                        className="text-sm text-primary-600 hover:text-primary-800"
                       >
                         {existingNotes ? 'Edit Note' : 'Add Note'}
                       </button>
                       
                       {isCompleted && (
-                        <span className="text-sm text-green-600 font-medium">✓ Completed</span>
+                        <span className="text-sm text-primary-600 font-medium">Completed</span>
                       )}
                     </div>
                   )}

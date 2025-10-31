@@ -36,30 +36,22 @@ export default function Dashboard() {
     {
       title: "Today's Focus",
       description: "Complete today's habits and see weekly progress",
-      href: "/today",
-      icon: "📅",
-      color: "primary"
+      href: "/today"
     },
     {
       title: "Manage Habits",
       description: "Create and track your daily habits",
-      href: "/habits",
-      icon: "✅",
-      color: "blue"
+      href: "/habits"
     },
     {
       title: "Notes & Reflections",
       description: "Capture thoughts and insights",
-      href: "/notes",
-      icon: "📝",
-      color: "green"
+      href: "/notes"
     },
     {
       title: "Share Progress",
       description: "Create shareable streak cards and stats",
-      href: "/share",
-      icon: "🔗",
-      color: "orange"
+      href: "/share"
     }
   ];
 
@@ -116,18 +108,14 @@ export default function Dashboard() {
                   className="card hover:scale-105 transition-transform duration-200 group"
                 >
                   <div className="card-content">
-                    <div className="flex items-start space-x-4">
-                      <div className="text-3xl">{action.icon}</div>
-                      <div className="flex-1">
+                  <div className="flex items-start space-x-0">
+                    <div className="flex-1">
                         <h3 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                           {action.title}
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                           {action.description}
                         </p>
-                      </div>
-                      <div className="text-gray-400 group-hover:text-primary-500 transition-colors">
-                        →
                       </div>
                     </div>
                   </div>
@@ -154,7 +142,7 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                     0
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -162,7 +150,7 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                     0
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">

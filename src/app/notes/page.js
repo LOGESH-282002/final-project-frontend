@@ -107,7 +107,6 @@ export default function NotesPage() {
           {notes.length === 0 ? (
             <div className="card">
               <div className="card-content text-center py-12">
-                <div className="text-6xl mb-4">📝</div>
                 <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
                   No notes yet
                 </h3>
@@ -137,7 +136,7 @@ export default function NotesPage() {
                         className="btn btn-ghost text-red-600 dark:text-red-400 p-1"
                         aria-label="Delete note"
                       >
-                        🗑️
+                        Delete
                       </button>
                     </div>
                     <div className="text-gray-900 dark:text-gray-100 whitespace-pre-wrap">

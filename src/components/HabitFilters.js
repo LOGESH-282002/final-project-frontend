@@ -124,7 +124,7 @@ const HabitFilters = forwardRef(({ habits, onFiltersChange }, ref) => {
             <select
               value={filters.completion}
               onChange={(e) => handleFilterChange('completion', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-gray-300 rounded-md text-sm text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
               <option value="all">All Habits</option>
               <option value="completed">Completed Today</option>
@@ -138,7 +138,7 @@ const HabitFilters = forwardRef(({ habits, onFiltersChange }, ref) => {
             <select
               value={filters.category}
               onChange={(e) => handleFilterChange('category', e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-gray-300 rounded-md text-sm text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
               <option value="all">All Categories</option>
               {availableCategories.map(category => (
@@ -185,14 +185,14 @@ const HabitFilters = forwardRef(({ habits, onFiltersChange }, ref) => {
               className="px-3 py-2 border border-gray-300 rounded-md text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="asc">
-                {filters.sortBy === 'name' ? 'A → Z' : 
-                 filters.sortBy === 'streak' ? 'Low → High' : 
-                 'Oldest → Newest'}
+                {filters.sortBy === 'name' ? 'A to Z' : 
+                 filters.sortBy === 'streak' ? 'Low to High' : 
+                 'Oldest to Newest'}
               </option>
               <option value="desc">
-                {filters.sortBy === 'name' ? 'Z → A' : 
-                 filters.sortBy === 'streak' ? 'High → Low' : 
-                 'Newest → Oldest'}
+                {filters.sortBy === 'name' ? 'Z to A' : 
+                 filters.sortBy === 'streak' ? 'High to Low' : 
+                 'Newest to Oldest'}
               </option>
             </select>
           </div>
@@ -202,7 +202,7 @@ const HabitFilters = forwardRef(({ habits, onFiltersChange }, ref) => {
             <div className="flex flex-col justify-end">
               <button
                 onClick={resetFilters}
-                className="px-3 py-2 text-sm text-blue-600 hover:text-blue-800 border border-blue-300 hover:border-blue-400 rounded-md transition-colors"
+                className="px-3 py-2 text-sm text-primary-600 hover:text-primary-800 border border-primary-300 hover:border-primary-400 rounded-md transition-colors"
               >
                 Reset ({getActiveFilterCount()})
               </button>
@@ -217,22 +217,22 @@ const HabitFilters = forwardRef(({ habits, onFiltersChange }, ref) => {
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-medium text-black">Active filters:</span>
             {filters.completion !== 'all' && (
-              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
                 {filters.completion === 'completed' ? 'Completed Today' : 'Not Completed Today'}
                 <button
                   onClick={() => handleFilterChange('completion', 'all')}
-                  className="ml-1 text-blue-600 hover:text-blue-800"
+                  className="ml-1 text-primary-600 hover:text-primary-800"
                 >
                   ×
                 </button>
               </span>
             )}
             {filters.category !== 'all' && (
-              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
                 {filters.category}
                 <button
                   onClick={() => handleFilterChange('category', 'all')}
-                  className="ml-1 text-green-600 hover:text-green-800"
+                  className="ml-1 text-primary-600 hover:text-primary-800"
                 >
                   ×
                 </button>

@@ -140,7 +140,7 @@ export default function ProfilePage() {
                     onClick={() => setIsEditing(true)}
                     className="btn btn-primary"
                   >
-                    ✏️ Edit Profile
+                    Edit Profile
                   </button>
                 )}
               </div>
@@ -188,7 +188,7 @@ export default function ProfilePage() {
                         htmlFor="avatar-upload"
                         className="btn btn-secondary cursor-pointer"
                       >
-                        📷 Choose Image
+                        Choose Image
                       </label>
                       {selectedFile && (
                         <button
@@ -244,7 +244,7 @@ export default function ProfilePage() {
                       disabled={updateLoading}
                       className="btn btn-primary flex-1"
                     >
-                      {updateLoading ? 'Saving...' : '💾 Save Changes'}
+                      {updateLoading ? 'Saving...' : 'Save Changes'}
                     </button>
                     <button
                       type="button"

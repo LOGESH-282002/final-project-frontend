@@ -150,7 +150,6 @@ export default function SharePage() {
           {habits.length === 0 ? (
             <div className="card">
               <div className="card-content text-center py-12">
-                <div className="text-6xl mb-4">🔗</div>
                 <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
                   No streaks to share yet
                 </h3>

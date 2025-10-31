@@ -7,11 +7,11 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { useAuth } from '@/contexts/AuthContext';
 
 const navItems = [
-  { name: 'Today', href: '/today', icon: '📅' },
-  { name: 'Habits', href: '/habits', icon: '✅' },
-  { name: 'Notes', href: '/notes', icon: '📝' },
-  { name: 'Share', href: '/share', icon: '🔗' },
-  { name: 'Profile', href: '/profile', icon: '👤' },
+  { name: 'Today', href: '/today' },
+  { name: 'Habits', href: '/habits' },
+  { name: 'Notes', href: '/notes' },
+  { name: 'Share', href: '/share' },
+  { name: 'Profile', href: '/profile' },
 ];
 
 export default function Navigation() {
@@ -33,7 +33,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center space-x-4">
-            <Link href="/dashboard" className="text-xl font-bold text-primary-600 dark:text-primary-400">
+            <Link href="/dashboard" className="text-xl font-bold text-primary-700 dark:text-primary-400">
               Habits
             </Link>
           </div>
@@ -46,7 +46,6 @@ export default function Navigation() {
                 href={item.href}
                 className={`nav-tab ${pathname === item.href ? 'active' : ''}`}
               >
-                <span className="mr-2">{item.icon}</span>
                 {item.name}
               </Link>
             ))}
@@ -56,10 +55,10 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-3">
             <button
               onClick={toggleTheme}
-              className="btn btn-ghost p-2"
+              className="btn btn-ghost px-3 py-2"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? '🌙' : '☀️'}
+              Theme
             </button>
             
             <div className="flex items-center space-x-2">
@@ -87,10 +86,10 @@ export default function Navigation() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="btn btn-ghost p-2"
+              className="btn btn-ghost px-3 py-2"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? '✕' : '☰'}
+              {isMobileMenuOpen ? 'Close' : 'Menu'}
             </button>
           </div>
         </div>
@@ -106,7 +105,6 @@ export default function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`nav-tab w-full justify-start ${pathname === item.href ? 'active' : ''}`}
                 >
-                  <span className="mr-3">{item.icon}</span>
                   {item.name}
                 </Link>
               ))}
@@ -117,8 +115,7 @@ export default function Navigation() {
                 onClick={toggleTheme}
                 className="btn btn-ghost w-full justify-start"
               >
-                <span className="mr-3">{theme === 'light' ? '🌙' : '☀️'}</span>
-                {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                Theme
               </button>
               
               <div className="flex items-center space-x-3 px-4 py-2">
@@ -143,7 +140,6 @@ export default function Navigation() {
                 onClick={handleLogout}
                 className="btn btn-ghost w-full justify-start text-red-600 dark:text-red-400"
               >
-                <span className="mr-3">🚪</span>
                 Logout
               </button>
             </div>
