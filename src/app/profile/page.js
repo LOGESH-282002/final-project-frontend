@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import Link from 'next/link';
+import Layout from '@/components/Layout';
 
 export default function ProfilePage() {
   const { user, loading, updateProfile, uploadAvatar } = useAuth();
@@ -111,57 +111,48 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
-      </div>
+      <Layout>
+        <div className="container py-8">
+          <div className="flex items-center justify-center h-64">
+            <div className="text-lg text-gray-600 dark:text-gray-400">Loading...</div>
+          </div>
+        </div>
+      </Layout>
     );
   }
 
   if (!user) {
-    return null; // Will redirect
+    return null;
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <Link href="/dashboard" className="text-blue-600 hover:text-blue-800">
-                ← Back to Dashboard
-              </Link>
-              <h1 className="text-xl font-semibold">Profile</h1>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="max-w-2xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="bg-white overflow-hidden shadow rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
+    <Layout>
+      <div className="container py-8">
+        <div className="max-w-2xl mx-auto">
+          <div className="card">
+            <div className="card-content">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Profile Information
-                </h2>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  Profile
+                </h1>
                 {!isEditing && (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+                    className="btn btn-primary"
                   >
-                    Edit Profile
+                    ✏️ Edit Profile
                   </button>
                 )}
               </div>
 
               {error && (
-                <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                <div className="mb-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg">
                   {error}
                 </div>
               )}
 
               {success && (
-                <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+                <div className="mb-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 px-4 py-3 rounded-lg">
                   {success}
                 </div>
               )}
@@ -195,21 +186,21 @@ export default function ProfilePage() {
                       />
                       <label
                         htmlFor="avatar-upload"
-                        className="cursor-pointer bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium border"
+                        className="btn btn-secondary cursor-pointer"
                       >
-                        Choose Image
+                        📷 Choose Image
                       </label>
                       {selectedFile && (
                         <button
                           type="button"
                           onClick={handleAvatarUpload}
                           disabled={uploadLoading}
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium disabled:opacity-50"
+                          className="btn btn-primary"
                         >
                           {uploadLoading ? 'Uploading...' : 'Upload Avatar'}
                         </button>
                       )}
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
                         Max file size: 5MB. Supported: JPG, PNG, GIF
                       </p>
                     </div>
@@ -218,7 +209,7 @@ export default function ProfilePage() {
                   <form onSubmit={handleSubmit} className="space-y-6">
 
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Full Name
                     </label>
                     <input
@@ -228,23 +219,21 @@ export default function ProfilePage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                      className="input"
                     />
                   </div>
 
-
-
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Email
                     </label>
                     <input
                       type="email"
                       value={user.email}
                       disabled
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-50 text-gray-500"
+                      className="input opacity-60 cursor-not-allowed"
                     />
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                       Email cannot be changed
                     </p>
                   </div>
@@ -253,14 +242,14 @@ export default function ProfilePage() {
                     <button
                       type="submit"
                       disabled={updateLoading}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium disabled:opacity-50"
+                      className="btn btn-primary flex-1"
                     >
-                      {updateLoading ? 'Saving...' : 'Save Changes'}
+                      {updateLoading ? 'Saving...' : '💾 Save Changes'}
                     </button>
                     <button
                       type="button"
                       onClick={handleCancel}
-                      className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-md text-sm font-medium"
+                      className="btn btn-secondary flex-1"
                     >
                       Cancel
                     </button>
@@ -283,17 +272,17 @@ export default function ProfilePage() {
                         </svg>
                       )}
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">{user.name}</h3>
+                    <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{user.name}</h2>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <span className="text-sm font-medium text-gray-500">Email:</span>
-                      <span className="ml-2 text-sm text-gray-900">{user.email}</span>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Email:</span>
+                      <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">{user.email}</span>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-gray-500">Member since:</span>
-                      <span className="ml-2 text-sm text-gray-900">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Member since:</span>
+                      <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
                         {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
                       </span>
                     </div>
@@ -303,7 +292,7 @@ export default function ProfilePage() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </Layout>
   );
 }

@@ -19,7 +19,7 @@ export default function LoginPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
+        <div className="text-lg text-black">Loading...</div>
       </div>
     );
   }
@@ -31,12 +31,12 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-8">
+        <h1 className="text-center text-3xl font-extrabold text-black mb-8">
           Welcome Back
         </h1>
         <LoginForm />
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-black">
             Don't have an account?{' '}
             <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
               Sign up here
