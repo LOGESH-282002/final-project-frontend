@@ -56,8 +56,8 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center text-black">Register</h2>
+    <div className="max-w-md mx-auto mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Register</h2>
       
       {error && (
         <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
@@ -67,7 +67,7 @@ export default function RegisterForm() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-black">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Full Name
           </label>
           <input
@@ -77,12 +77,12 @@ export default function RegisterForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-gray-900 dark:text-white dark:bg-gray-700"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-black">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Email
           </label>
           <input
@@ -92,12 +92,12 @@ export default function RegisterForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-gray-900 dark:text-white dark:bg-gray-700"
           />
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-black">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Password
           </label>
           <input
@@ -107,12 +107,12 @@ export default function RegisterForm() {
             value={formData.password}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-gray-900 dark:text-white dark:bg-gray-700"
           />
         </div>
 
         <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-black">
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Confirm Password
           </label>
           <input
@@ -122,14 +122,14 @@ export default function RegisterForm() {
             value={formData.confirmPassword}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-gray-900 dark:text-white dark:bg-gray-700"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 transition-all duration-200"
         >
           {loading ? 'Creating Account...' : 'Register'}
         </button>
@@ -141,13 +141,13 @@ export default function RegisterForm() {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-black">Or continue with</span>
+            <span className="px-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">Or continue with</span>
           </div>
         </div>
 
         <button
           onClick={handleGoogleLogin}
-          className="mt-3 w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="mt-3 w-full flex justify-center items-center py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors duration-200"
         >
           <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
