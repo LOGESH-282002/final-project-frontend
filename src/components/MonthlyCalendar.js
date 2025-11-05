@@ -67,27 +67,27 @@ export default function MonthlyCalendar({ currentMonth, habits, onDayClick }) {
     
     // Current month vs other months
     if (!isCurrentMonth) {
-      baseClasses += "text-gray-400 ";
+      baseClasses += "text-gray-400 dark:text-gray-500 ";
     } else {
-      baseClasses += "text-black ";
+      baseClasses += "text-gray-900 dark:text-gray-100 ";
     }
     
     // Today highlight
     if (isToday) {
-      baseClasses += "ring-2 ring-blue-400 ";
+      baseClasses += "ring-2 ring-primary-400 dark:ring-primary-500 ";
     }
     
     // Completion status styling
     if (status.type === 'future' || !isCurrentMonth) {
-      baseClasses += "hover:bg-gray-100 ";
+      baseClasses += "hover:bg-gray-100 dark:hover:bg-gray-700 ";
     } else if (status.type === 'all-completed') {
-      baseClasses += "bg-green-100 hover:bg-green-200 ";
+      baseClasses += "bg-green-100 dark:bg-green-900/30 hover:bg-green-200 dark:hover:bg-green-900/50 ";
     } else if (status.type === 'partial') {
-      baseClasses += "bg-yellow-100 hover:bg-yellow-200 ";
+      baseClasses += "bg-yellow-100 dark:bg-yellow-900/30 hover:bg-yellow-200 dark:hover:bg-yellow-900/50 ";
     } else if (status.type === 'none' && status.totalCount > 0) {
-      baseClasses += "bg-red-50 hover:bg-red-100 ";
+      baseClasses += "bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 ";
     } else {
-      baseClasses += "hover:bg-gray-100 ";
+      baseClasses += "hover:bg-gray-100 dark:hover:bg-gray-700 ";
     }
     
     return baseClasses;
@@ -126,11 +126,11 @@ export default function MonthlyCalendar({ currentMonth, habits, onDayClick }) {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
-    <div className="bg-white">
+    <div>
       {/* Week day headers */}
       <div className="grid grid-cols-7 gap-1 mb-2">
         {weekDays.map(day => (
-          <div key={day} className="h-8 flex items-center justify-center text-sm font-semibold text-black">
+          <div key={day} className="h-8 flex items-center justify-center text-sm font-semibold text-gray-900 dark:text-gray-100">
             {day}
           </div>
         ))}

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import Link from 'next/link';
+import Layout from '@/components/Layout';
 import MonthlyCalendar from '@/components/MonthlyCalendar';
 import DayDetailModal from '@/components/DayDetailModal';
 
@@ -101,9 +101,13 @@ export default function CalendarPage() {
 
   if (loading || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg text-black">Loading...</div>
-      </div>
+      <Layout>
+        <div className="container py-8">
+          <div className="flex items-center justify-center h-64">
+            <div className="text-lg text-gray-600 dark:text-gray-400">Loading...</div>
+          </div>
+        </div>
+      </Layout>
     );
   }
 
@@ -112,101 +116,84 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <Link href="/dashboard" className="text-blue-600 hover:text-blue-800">
-                ← Dashboard
-              </Link>
-              <h1 className="text-xl font-semibold text-black">Calendar</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/today"
-                className="text-purple-600 hover:text-purple-800 text-sm font-medium"
-              >
-                Today
-              </Link>
-              <Link
-                href="/habits"
-                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-              >
-                Habits
-              </Link>
-              <Link
-                href="/share"
-                className="text-orange-600 hover:text-orange-800 text-sm font-medium"
-              >
-                Share
-              </Link>
+    <Layout>
+      <div className="container py-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Page Header */}
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                Calendar
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400 mt-1">
+                View your habit completion history
+              </p>
             </div>
           </div>
-        </div>
-      </nav>
 
-      <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
           {error && (
-            <div className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            <div className="mb-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg">
               {error}
             </div>
           )}
 
           {/* Calendar Header */}
-          <div className="bg-white rounded-lg shadow mb-6 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <button
-                onClick={() => navigateMonth(-1)}
-                className="p-2 hover:bg-gray-100 rounded-full"
-              >
-                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              
-              <h2 className="text-2xl font-bold text-black">
-                {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-              </h2>
-              
-              <button
-                onClick={() => navigateMonth(1)}
-                className="p-2 hover:bg-gray-100 rounded-full"
-              >
-                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+          <div className="card mb-6">
+            <div className="card-content">
+              <div className="flex items-center justify-between mb-4">
+                <button
+                  onClick={() => navigateMonth(-1)}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"
+                >
+                  <svg className="w-5 h-5 text-gray-900 dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                </h2>
+                
+                <button
+                  onClick={() => navigateMonth(1)}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"
+                >
+                  <svg className="w-5 h-5 text-gray-900 dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
 
-            <MonthlyCalendar
-              currentMonth={currentMonth}
-              habits={habits}
-              onDayClick={handleDayClick}
-            />
+              <MonthlyCalendar
+                currentMonth={currentMonth}
+                habits={habits}
+                onDayClick={handleDayClick}
+              />
+            </div>
           </div>
 
           {/* Legend */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-semibold text-black mb-4">Legend</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                <span className="text-black">All habits completed</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                <span className="text-black">Some habits completed</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-                <span className="text-black">No habits completed</span>
+          <div className="card">
+            <div className="card-content">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Legend</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                  <span className="text-gray-900 dark:text-gray-100">All habits completed</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                  <span className="text-gray-900 dark:text-gray-100">Some habits completed</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
+                  <span className="text-gray-900 dark:text-gray-100">No habits completed</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
       {/* Day Detail Modal */}
       {showDayModal && selectedDate && (
@@ -217,6 +204,6 @@ export default function CalendarPage() {
           onToggleHabit={handleToggleHabit}
         />
       )}
-    </div>
+    </Layout>
   );
 }
